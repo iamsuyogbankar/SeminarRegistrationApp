@@ -1,0 +1,15 @@
+.card-input{
+    margin-left: 15%;
+    margin-top: 5%;
+}
+.card .card-header{
+    text-align: center;
+}
+#error {
+    float:left;
+    color:red
+}
+.errors {
+    float:left;
+    color:red
+}
