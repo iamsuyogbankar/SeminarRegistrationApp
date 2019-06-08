@@ -1,192 +1,179 @@
 <div class="container">
   <div class="col-md-12">
-    <div class="card m-5">
-      <div class="row">
-        <div class="card-body">   
-          <div class="card-header">Register Here To Attend the seminar
-            <button routerLink="/adminview" class="btn btn-outline-dark">Admin View</button>
-          </div>  
+      <div class="text-center mt-5 mb-5" 
+      style="text-transform: uppercase; color: white">
+      <h3>Register Here To Attend the seminar</h3>
+    </div>
+    <div class="card" style="width: 60%; margin-left: 20%; border-radius: 10%; width: 60%;">
+      <!-- <div class="row"> -->
+        <div class="card-body col-md-12" style="background-color: lightyello">   
           <div class="card-input col-md-8">       
           <form [formGroup]="registrationForm" (ngSubmit)="onRegistraionSubmit(registrationForm.value)" method="">
-              <div class="form-group pb-3">
-                <label for="">Name</label>
+              <div class="form-group">
+                <label for="" >Name</label>
                 <input type="text" class="form-control" formControlName="name" 
-                name="name" id="name" required>
-                <!-- <div *ngIf="submitted && f.name.errors || f.name.touched">
-                  <span *ngIf="f.name.errors.required" class="errors pt-1">First Name is required</span>
-                </div> -->
+                name="name" id="name" placeholder="full name" required>
                 <div class="" *ngIf="registrationForm.controls['name'].touched">
-                    <span style="color: red;" *ngIf="registrationForm.controls['name'].hasError('required')">
-                      Your Mobile Number is Required
-                    </span>
-                    </div>
+                  <span style="color: red;" *ngIf="registrationForm.controls['name'].hasError('required')">
+                    <span>*</span>Your Name is Required
+                  </span>
+                  </div>
               </div>
               
-              <div class="form-group pb-3">
+              <div class="form-group">
                 <label for="">Mobile number</label>
                 <input type="tel" class="form-control" formControlName="mobilenumber" 
-                name="mobilenumber" id="mobilenumber" maxlength="10" required>
-                <!-- <div *ngIf="submitted && f.name.errors || f.mobilenumber.touched">
-                  <span *ngIf="f.mobilenumber.errors.required" class="errors pt-1">Mobile Number is required</span>
-                  <span *ngIf="f.mobilenumber.errors.pattern" class="errors pt-1">Only Numbers Allowed</span>
-                  <span *ngIf="f.mobilenumber.errors.minlength || f.mobilenumber.errors.maxlength" class="errors pt-1">Mobile Number must be 10 digits</span>
-                </div> -->
+                name="mobilenumber" id="mobilenumber" placeholder="mobile no" maxlength="10" required>
                 <div class="" *ngIf="registrationForm.controls['mobilenumber'].touched">
                     <span style="color: red;" *ngIf="registrationForm.controls['mobilenumber'].hasError('required')">
-                      Your Mobile Number is Required
+                        <span>*</span>Your Mobile Number is Required
                     </span>
                     <span style="color: red;" *ngIf="registrationForm.controls['mobilenumber'].hasError('pattern')">
-                      Invalid Mobile Number
+                        <span>*</span>Invalid Mobile Number
                     </span>
-                    <span style="color: red;" *ngIf="registrationForm.controls['mobilenumber'].hasError('minlength')">
-                        Mobile Number must be 10 digit
-                      </span>
+                    <div style="color: red;" *ngIf="registrationForm.controls['mobilenumber'].hasError('minlength')">
+                        <span>*</span>Mobile Number must be 10 digit
+                    </div>
                   </div>
               </div>
     
-              <div class="form-group pb-3">
+              <div class="form-group">
                 <label for="">Adhar Card</label>
-                <input type="text" class="form-control" formControlName="adharcard" 
-                name="adharcard" id="adharcard" required>
-                <!-- <div *ngIf="submitted && f.adharcard.errors || f.adharcard.touched">
-                  <span *ngIf="f.adharcard.errors.required" class="errors pt-1">AdharCard Number is required</span>
-                  <span *ngIf="f.adharcard.errors.pattern" class="errors pt-1">Invalid Number</span>
-                </div> -->
+                <input type="tel" class="form-control" formControlName="adharcard" 
+                name="adharcard" id="adharcard" placeholder="Adhar No"  required>
                 <div class="" *ngIf="registrationForm.controls['adharcard'].touched">
                   <span style="color: red;" *ngIf="registrationForm.controls['adharcard'].hasError('required')">
-                    Your Adharcard Number is Required
+                      <span>*</span>Your Adhar Number is Required
                   </span>
-                  <!-- <span style="color: red;" *ngIf="registrationForm.controls['adharcard'].hasError('pattern')">
-                    Invalid AdharCard Card Number
-                  </span> -->
+                  <span  style="color: red;" *ngIf="registrationForm.controls['adharcard'].hasError('minlength')">
+                      <span>*</span>Invalid Adhar Number
+                  </span>
+                  <span *ngIf="registrationForm.controls['adharcard'].hasError('maxlength')" style="color: red;" >
+                      <span>*</span>Invalid Adhar Number
+                  </span>
+                  
                 </div>
               </div>
     
               
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Pan Card</label>
                 <input type="text" class="form-control" formControlName="pancard" 
-                name="pancard" id="pancard" required>
-                <!-- <div *ngIf="submitted && f.pancard.errors || f.pancard.touched">
-                  <span *ngIf="f.pancard.errors.required" class="errors pt-1">Pancard Number is required</span>
-                  <span *ngIf="f.pancard.errors.pattern" class="errors pt-1">Invalid PanCard Number</span>
-                </div> -->
+                name="pancard" id="pancard" placeholder="Pan no" required>
                 <div class="" *ngIf="registrationForm.controls['pancard'].touched">
                     <span style="color: red;" *ngIf="registrationForm.controls['pancard'].hasError('required')">
-                      Your PanCard is Required
+                        <span>*</span>Your PanCard is Required
                     </span>
-                    <!-- <span style="color: red;" *ngIf="registrationForm.controls['pancard'].hasError('pattern')">
-                      Invalid Pan Card Number
-                    </span> -->
+                    <span style="color: red;" *ngIf="registrationForm.controls['pancard'].hasError('pattern')">
+                        <span>*</span>Invalid Pan Card Number
+                    </span>
                   </div>
               </div>
     
               
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Email Id</label>
                 <input type="email" class="form-control" formControlName="eid" 
-                name="eid" id="eid" required>
-                <!-- <div *ngIf="submitted && f.eid.errors || f.eid.touched">
-                  <span *ngIf="f.eid.errors.required" class="errors pt-1">Email Id is required</span>
-                  <span *ngIf="f.eid.errors.pattern" class="errors pt-1">Invalid Email Id</span>
-                </div> -->
+                name="eid" id="eid" placeholder="Email Id" required>
                   <div class="" *ngIf="registrationForm.controls['eid'].touched">
                     <span style="color: red;" *ngIf="registrationForm.controls['eid'].hasError('required')">
-                      Your Email is Required
+                        <span>*</span>Your Email is Required
                     </span>
                     <span style="color: red;" *ngIf="registrationForm.controls['eid'].hasError('pattern')">
-                      Invalid Email Id
+                        <span>*</span>Invalid Email Id
                     </span>
                   </div>
               </div>
     
               
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Current Company</label>
                 <input type="text" class="form-control" formControlName="currcompany" 
-                name="currcompany" id="currcompany" required>
+                name="currcompany" id="currcompany" placeholder="current company" required>
                 <div class="" *ngIf="registrationForm.controls['currcompany'].touched">
                     <span style="color: red;" *ngIf="registrationForm.controls['currcompany'].hasError('required')">
-                      Your Company Name is Required
+                        <span>*</span>Your Company Name is Required
                     </span>
                 </div>
               </div>
     
               
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Job Profile</label>
                 <input type="text" class="form-control" formControlName="jprofile" 
-                name="jprofile" id="jprofile" required>
+                name="jprofile" id="jprofile" placeholder="job profile" required>
                 <div class="" *ngIf="registrationForm.controls['jprofile'].touched">
                   <span style="color: red;" *ngIf="registrationForm.controls['jprofile'].hasError('required')">
-                    Your Job Profile is Required
+                      <span>*</span>Your Job Profile is Required
                   </span>
                 </div>
               </div>
               
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Joining Date</label>
                 <input type="date" class="form-control" formControlName="jdate" 
                 name="jdate" id="jdate" required>
                 <div class="" *ngIf="registrationForm.controls['jdate'].touched">
-                  <span style="color: red;" *ngIf="registrationForm.controls['jdate'].hasError('required')">
-                    Your Joining Date is Required
+                  <span style="color: red;"  *ngIf="registrationForm.controls['jdate'].hasError('required')">
+                      <span>*</span>Your Joining Date is Required
                   </span>
                 </div>
               </div>
     
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Highest Qualification</label>
                 <input type="text" class="form-control" formControlName="hqulification" 
-                name="hqulification" id="hqulification" required>
+                name="hqulification" id="hqulification" placeholder="Highest Degree" required>
                 <div class="" *ngIf="registrationForm.controls['hqulification'].touched">
                   <span style="color: red;" *ngIf="registrationForm.controls['hqulification'].hasError('required')">
-                    Your Highest Qulification is Required
+                      <span>*</span>Your Highest Qulification is Required
                   </span>
                 </div>
               </div>
     
               
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Graducation</label>
                 <input type="text" class="form-control" formControlName="graduation" 
-                name="graduation" id="graduation" required>
+                name="graduation" id="graduation" placeholder="Bachelor's Degree" required>
                 <div class="" *ngIf="registrationForm.controls['graduation'].touched">
                   <span style="color: red;" *ngIf="registrationForm.controls['graduation'].hasError('required')">
-                    Your Graduation Qulification is Required
+                      <span>*</span>Your Graduation Qulification is Required
                   </span>
                   </div>
               </div>
     
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Year of Passing XII</label>
                 <input type="date" class="form-control" formControlName="yptwelth" 
                 name="yptwelth" id="yptwelth" required>
                 <div class="" *ngIf="registrationForm.controls['yptwelth'].touched">
                     <span style="color: red;" *ngIf="registrationForm.controls['yptwelth'].hasError('required')">
-                      Your Date of Passing XII<sup>th</sup> is Required
+                        <span>*</span>Your Date of Passing XII<sup>th</sup> is Required
                     </span>
                   </div>
               </div>
     
-              <div class="form-group pb-4">
+              <div class="form-group">
                 <label for="">Year of Passing X</label>
                 <input type="date" class="form-control" formControlName="ypten" 
                 name="ypten" id="ypten" required>
                 <div class="" *ngIf="registrationForm.controls['ypten'].touched">
                   <span style="color: red;" *ngIf="registrationForm.controls['ypten'].hasError('required')">
-                      Your Date of Passing X<sup>th</sup> is Required
+                      <span>*</span>Your Date of Passing X<sup>th</sup> is Required
                   </span>
                 </div>
               </div>
 
               <div class="regbtn form-group">
-                <button type="submit" class="btn btn-danger btn-md" >Register</button>
+                <button type="submit" class="btn btn-default btn-md"
+                 style="background-color: black;
+                 color: whitesmoke; margin-left: 35%;" [disabled]="!registrationForm.valid">Register</button>
               </div>
           </form>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </div>

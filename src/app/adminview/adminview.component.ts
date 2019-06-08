@@ -8,17 +8,21 @@ import { ShareseminarService } from '../shareseminar.service';
 })
 export class AdminviewComponent implements OnInit {
 seminarList = [];
-  constructor(private shareseminarService: ShareseminarService) { }
+public filterData = [];
+public semid;
+constructor(private shareseminarService: ShareseminarService) { 
+  
+}
 
-  ngOnInit() {
-    this.seminarList = this.shareseminarService.getSeminarData();
+ngOnInit() {
+  this.seminarList = this.shareseminarService.getSeminarData();
+  this.semid = this.seminarList[0].id;
+  console.log('seminarlist', this.semid);
+}
 
-    console.log('seminarlist', this.seminarList)
+  onDetails(id){
+    this.filterData = this.seminarList.filter(m => m.id === id);
+    console.log(this.filterData)
   }
-  listView(){
     
-  }
-  gridView(){
-
-  }
 }

@@ -1,33 +1,70 @@
 <div class="container">
-    <div class="text-center mt-5 mb-5" style="border: 2px solid gray; text-transform: uppercase;"><h3>Admin View</h3>
-      <button routerLink="/registration" class="btn btn-outline-danger">Go For Registration</button>
+    <div class="text-center mt-5 mb-5" style="text-transform: uppercase; color: whitesmoke"><h3>Admin View</h3>
     </div>
-    <div id="btnContainer">
-        <button class="btn" (click)="listView()"><i class="fa fa-bars"></i> List</button> 
-        <button class="btn active" (click)="gridView()"><i class="fa fa-th-large"></i> Grid</button>
+      <div id="btnContainer">
+          <button class="btn" onclick="listView()"><i class="fa fa-bars"></i> List</button> 
+        <button class="btn active" onclick="gridView()"><i class="fa fa-th-large"></i> Card</button>
       </div>
       <br>
-      <div class="container">
-        <div class="col-md-8">
-        <div class="row">        
-          <div class="row">
-            <div class="column" *ngFor="let list of seminarList"  style="background-color:#aaa;">
-                <div class="card">
-                  <div class="card-header"><h2>{{ list.name }}</h2></div>
-                  <div class="card-body"><p>{{ list.number }}</p></div>
-                </div> 
-            </div>
-          </div>
-      
-          <div class="row">
-            <div class="column"  *ngFor="let list of seminarList" style="background-color:#ccc;">
-                <ul class="list-group">
-                  <li class="list-group-item"></li>
-                  <li class="list-group-item list-group-item-primary">{{ list.name }}</li>
-                </ul>
-            </div>
-          </div>  
-    </div> 
-  </div>
+    <div class="container">
+      <div class="col-md-12">
+        <div *ngIf="seminarList == ''">
+          <h2 class="text-center"> There is no registered people for seminar</h2>
+        </div>
+      <div class="row">
+        <div class="column" *ngFor="let list of seminarList" >
+            <div class="card">
+              <div class="card-header text-center" style="background-color: #870202;color:whitesmoke;"><h2>{{ list.name | uppercase}}</h2>
+              </div>
+              <div class="card-body">
+                <button class="btn btn-dark btn-md" style="background-color: black; margin-left: 35%;"
+                data-toggle="modal" data-target="#centralModalInfo"
+                  (click)="onDetails(list.id)">View Details</button>
+              </div>
+            </div> 
+        </div>
+      </div> 
   </div>
 </div>
+
+<!-- Central Modal Medium Info -->
+<div *ngIf="filterData.length > 0" class="modal fade" id="centralModalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header text-center" style="background-color: #870202;">
+        <p class="heading lead" style="color: whitesmoke; margin-left: 38%;">{{ filterData[0].name | uppercase}}</p>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+        <div class="text-center">          
+          <div class="card border-dark mb-3" style="max-width: 100%;">
+            <div class="card-header" style="background-color: black; color: whitesmoke">Designation:- {{ filterData[0].jobprofile | uppercase}}</div>
+            <div class="card-body text-dark">
+              <h5 class="card-title">Email-Id:- {{filterData[0].email}}</h5>
+              <h5 class="card-title">Organization:- {{filterData[0].company}}</h5>
+              <h5 class="card-title">Joining Date:- {{filterData[0].joiningdate}}</h5>
+              <h5 class="card-title">Contact No:- {{filterData[0].number}}</h5>
+              <h5 class="card-title">Highest Qulification:- {{filterData[0].highestql}}</h5>
+              <h5 class="card-title">Graduation:- {{filterData[0].graduation}}</h5>
+              <h5 class="card-title">XII<sup>th</sup> :- {{filterData[0].twelth}}</h5>
+              <h5 class="card-title">X<sup>th</sup> :- {{filterData[0].tenth}}</h5>
+              <h5 class="card-title">Adhar Card No:- {{filterData[0].adharno}}</h5>
+              <h5 class="card-title">Pan Card No:- {{filterData[0].pancardno}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center"  style="background-color: #870202;">
+        <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal" style="background-color: black; color: whitesmoke;">Thank You</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Central Modal Medium Info-->

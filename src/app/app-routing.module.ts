@@ -4,9 +4,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AdminviewComponent } from './adminview/adminview.component';
 
 const routes: Routes = [
-  {path:'', component: RegistrationComponent},
+  {path:'', component: AdminviewComponent},
   {path:'registration', component: RegistrationComponent},
-  {path:'adminview', component: AdminviewComponent}
+  // {path:'adminview', component: AdminviewComponent}
 ];
 
 @NgModule({
